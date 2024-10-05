@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "@/components/Button";
+import Inputfield from "@/components/Inputfield";
 
 const page = () => {
   return (
@@ -19,7 +20,7 @@ const page = () => {
           <Button text="Channel" variant="dark" />
         </div>
 
-        
+        <Inputfield />
       </div>
     </div>
   );
