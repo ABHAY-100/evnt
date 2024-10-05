@@ -20,7 +20,10 @@ const page = () => {
           <Button text="Channel" variant="dark" />
         </div>
 
-        <Inputfield />
+        <div className="gap-[60px] flex flex-col">
+          <Inputfield text="Group Name*" placeholder="bro group name here!.." />
+          <Inputfield text="Group  Description" placeholder="try typing something here!.." />
+        </div>
       </div>
     </div>
   );
