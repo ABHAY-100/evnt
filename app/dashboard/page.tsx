@@ -4,9 +4,9 @@ import Inputfield from "@/components/Inputfield";
 
 const page = () => {
   return (
-    <div className="h-screen max-w-[545.62px] mx-auto">
-      <div className="flex flex-col gap-[52px]">
-        <div className="pt-[250px] flex flex-col gap-[9px] h-fit">
+    <div className="h-screen max-w-[545.62px] mx-auto gap-[60px] flex flex-col">
+      <div className="flex flex-col gap-[52px] my-[250px]">
+        <div className="flex flex-col gap-[9px] h-fit">
           <p className="flex flex-col justify-center text-white text-center items-center text-[34.2px] font-semibold">
             So, what’re you tryna create?
           </p>
@@ -24,6 +24,8 @@ const page = () => {
           <Inputfield text="Group Name*" placeholder="bro group name here!.." />
           <Inputfield text="Group  Description" placeholder="try typing something here!.." />
         </div>
+
+        <Button text="Continue" variant="light" />
       </div>
     </div>
   );
