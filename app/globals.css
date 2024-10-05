@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply font-manrope; /* Using the Manrope font from your Tailwind config */
+    @apply bg-black;
+}

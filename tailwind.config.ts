@@ -12,8 +12,12 @@ const config: Config = {
         black: "#000",
         white: "#FFF",
       },
+      fontFamily: {
+        manrope: ['Manrope', 'sans-serif'],
+      },
     },
   },
   plugins: [],
 };
+
 export default config;
