@@ -1,9 +1,14 @@
+"use client"
 import React from "react";
 import Button from "@/components/Button";
 import Inputfield from "@/components/Inputfield";
 import Uploadfield from "@/components/Uploadfield";
 
 const page = () => {
+  const handleClick = () => {
+    alert('feat under work!'); // Replace with your desired action
+  };
+
   return (
     <div className="h-screen max-w-[545.62px] mx-auto gap-[60px] flex flex-col py-[250px]">
       <div className="flex flex-col gap-[52px]">
@@ -18,7 +23,7 @@ const page = () => {
 
         <div className="max-w-[545px] mx-auto w-full flex flex-row gap-[32px]">
           <Button text="Group" variant="light" />
-          <Button text="Channel" variant="dark" />
+          <Button text="Channel" variant="dark" onClick={handleClick} />
         </div>
 
         <div className="gap-[60px] flex flex-col">
