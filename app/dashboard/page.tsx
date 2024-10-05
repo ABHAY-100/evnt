@@ -15,9 +15,11 @@ const page = () => {
         </div>
 
         <div className="max-w-[545px] mx-auto w-full flex flex-row gap-[32px]">
-          <Button />
-          <Button />
+          <Button text="Group" variant="light" />
+          <Button text="Channel" variant="dark" />
         </div>
+
+        
       </div>
     </div>
   );
