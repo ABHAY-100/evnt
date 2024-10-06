@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 
-const UploadField = () => {
+interface UploadFieldProps {
+  onFileChange: (file: File | null) => void;
+}
+
+const UploadField: React.FC<UploadFieldProps> = ({ onFileChange }) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // Handle file selection
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
 
     if (file) {
-      // Check if the selected file has a CSV extension
       if (file.type === "text/csv" || file.name.endsWith(".csv")) {
         setSelectedFile(file);
-        setError(null); // Clear any previous errors
+        setError(null);
+        onFileChange(file);
       } else {
         setSelectedFile(null);
         setError("Please upload a file in CSV format.");
+        onFileChange(null);
       }
     }
   };
@@ -38,7 +42,6 @@ const UploadField = () => {
         />
       </div>
 
-      {/* Display error message if the file format is incorrect */}
       {error && (
         <p className="text-red-500 text-[16px] text-center mt-2">
           {error}
