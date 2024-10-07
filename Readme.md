@@ -7,11 +7,13 @@
 
 ## Overview
 
-**evnt.** is an innovative event management automation tool specifically designed for college clubs and organizations. By streamlining the processes involved in organizing workshops, seminars, and meetups, **evnt.** aims to alleviate the administrative burden often faced by event organizers. Our solution allows teams to focus on delivering outstanding experiences rather than getting bogged down by manual tasks.
+**evnt.** is a powerful event management automation tool designed to streamline the organization of events across various sectors. By automating tasks like participant registration and group management, **evnt.** allows organizers to focus on delivering memorable experiences rather than getting bogged down by administrative work.
 
 ## Problem Statement
 
-As college students, we often found ourselves overwhelmed by the challenges of manually managing participant groups during events. For instance, while organizing an event like ABC, we needed to create a community and efficiently manage various groups for participants, volunteers, and different teams (such as marketing and logistics). The process of manually adding members based on Google Form responses was not only time-consuming but also prone to errors. Recognizing this need for automation, we developed **evnt.** to simplify and optimize event management.
+Organizing events often requires manually managing participant information and group communications, which can be time-consuming and error-prone. For example, during a Tech Conference, organizers must create separate groups for speakers, volunteers, and attendees, complicating communication and coordination.
+
+evnt. simplifies this process by automating group creation and participant management, allowing organizers to focus on delivering a successful event.
 
 ## Key Features
 
@@ -23,9 +25,16 @@ As college students, we often found ourselves overwhelmed by the challenges of m
 
 4. **User-Friendly Interface**: A clean and intuitive interface that allows users to navigate the application with ease, making event management straightforward and efficient.
 
+## Team Members
+
+1. [Abhay Balakrishnan](https://github.com/ABHAY-100)
+2. [Aadithya Madhav](https://github.com/aadithyayy)
+3. [Elvin J Alapatt](https://github.com/Elvin2605)
+4. [Joshua Sebi](https://github.com/JoshuaSebi)
+
 ## Challenges Faced
 
-During our intensive 15-hour hackathon, we successfully developed the front end of **evnt.** but encountered several challenges, including:
+Due to the limited time during our 15-hour hackathon, we prioritized automating group creation and member addition within evnt. We successfully developed the front end; however, we faced several challenges, including:
 
 - **WhatsApp API Limitations**: Gaining access to the WhatsApp API proved to be complex, with potential risks of account bans when using unauthorized methods.
 - **Transition to Alternative Platforms**: We explored using Telegram and Discord for group management, but faced limitations regarding group or server creation capabilities.
@@ -58,7 +67,12 @@ To set up **evnt.** locally, follow these steps:
     npm start
     ```
 
-## Tech Stack
+5. Open your web browser and go to `http://localhost:3000` to view the application.
+
+*Note: Currently, only the frontend has been developed.*
+
+    
+## Build With
 
 ![Tech Stack](https://skillicons.dev/icons?i=js,html,tailwind,nextjs,vercel,figma)
 
