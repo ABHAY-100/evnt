@@ -4,16 +4,22 @@ import Button from "@/components/Button";
 import Inputfield from "@/components/Inputfield";
 import UploadField from "@/components/Uploadfield";
 
-const csvToJson = async (file: File): Promise<any[]> => {
+interface CsvRow {
+  [key: string]: string;
+}
+
+const csvToJson = async (file: File): Promise<CsvRow[]> => {
   const text = await file.text();
   const rows = text.split("\n").map((row) => row.split(","));
   const headers = rows[0];
+
   const data = rows.slice(1).map((row) =>
     row.reduce((obj, value, index) => {
       obj[headers[index]] = value;
       return obj;
-    }, {} as any)
+    }, {} as CsvRow)
   );
+
   return data;
 };
 
