@@ -1,18 +1,17 @@
-"use client"; // Required for client-side components
+"use client";
 
-
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push('/dashboard');
+    router.push("/dashboard");
   };
 
   return (
     <div className="bg-black w-full h-screen text-white flex justify-center items-center">
-      <button 
+      <button
         onClick={handleClick}
         className="text-[30px] font-semibold py-[36px] px-[44px] border-2 border-dashed border-white/[.4] hover:border-white ease-in-out transition"
       >

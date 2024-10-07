@@ -1,23 +1,76 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Button from "@/components/Button";
 import Inputfield from "@/components/Inputfield";
-import Uploadfield from "@/components/Uploadfield";
+import UploadField from "@/components/Uploadfield";
+
+const csvToJson = async (file: File): Promise<any[]> => {
+  const text = await file.text();
+  const rows = text.split("\n").map((row) => row.split(","));
+  const headers = rows[0];
+  const data = rows.slice(1).map((row) =>
+    row.reduce((obj, value, index) => {
+      obj[headers[index]] = value;
+      return obj;
+    }, {} as any)
+  );
+  return data;
+};
 
 const Page = () => {
+  const [isChannel, setIsChannel] = useState(false);
   const [groupName, setGroupName] = useState("");
   const [groupDescription, setGroupDescription] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [resetFile, setResetFile] = useState(false);
 
   const handleFileChange = (file: File | null) => {
     setSelectedFile(file);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
-    // Add your form submission logic here
-    console.log(`Group Name: ${groupName}, Description: ${groupDescription}, File: ${selectedFile?.name || 'None'}`);
+
+    if (!selectedFile) {
+      alert("Please upload a CSV file");
+      return;
+    }
+
+    try {
+      const csvData = await csvToJson(selectedFile);
+
+      const finalJson = {
+        type: isChannel ? "Channel" : "Group",
+        name: groupName,
+        description: groupDescription,
+        data: csvData,
+      };
+
+      const blob = new Blob([JSON.stringify(finalJson, null, 2)], {
+        type: "application/json",
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${groupName || "output"}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+
+      setGroupName("");
+      setGroupDescription("");
+      setSelectedFile(null);
+
+      setResetFile(true);
+
+      setTimeout(() => {
+        setResetFile(false);
+      }, 0);
+
+      window.location.reload();
+    } catch (error) {
+      console.error("Error processing CSV:", error);
+      alert("There was an error processing the CSV file.");
+    }
   };
 
   return (
@@ -33,28 +86,37 @@ const Page = () => {
         </div>
 
         <div className="max-w-[545px] mx-auto w-full flex flex-row gap-[32px]">
-          <Button text="Group" variant="light" />
-          <Button text="Channel" variant="dark" onClick={() => alert('feat under work!')} />
+          <Button
+            text="Group"
+            variant={!isChannel ? "light" : "dark"}
+            onClick={() => setIsChannel(false)}
+          />
+          <Button
+            text="Channel"
+            variant={isChannel ? "light" : "dark"}
+            onClick={() => setIsChannel(true)}
+          />
         </div>
 
         <div className="gap-[60px] flex flex-col">
-          <Inputfield 
-            text="Group Name*" 
-            placeholder="bro group name here..!" 
+          <Inputfield
+            isRequired={true}
+            text={isChannel ? "Channel Name*" : "Group Name*"}
+            placeholder={`e.g. JuicyChemistry`}
             value={groupName}
-            onChange={(e) => setGroupName(e.target.value)} 
+            onChange={(e) => setGroupName(e.target.value)}
           />
-          <Inputfield 
-            text="Group Description" 
-            placeholder="try typing something here..!" 
+          <Inputfield
+            text={isChannel ? "Channel Description" : "Group Description"}
+            placeholder={`e.g. A skincare community focused on organic products`}
             value={groupDescription}
-            onChange={(e) => setGroupDescription(e.target.value)} 
+            onChange={(e) => setGroupDescription(e.target.value)}
           />
-          <Uploadfield onFileChange={handleFileChange} />
+          <UploadField onFileChange={handleFileChange} resetFile={resetFile} />
         </div>
 
         <div className="mb-[250px]">
-          <Button text="Continue" variant="light" type="submit" /> {/* This button is the submit button */}
+          <Button text="Continue" variant="light" type="submit" />
         </div>
       </form>
     </div>
