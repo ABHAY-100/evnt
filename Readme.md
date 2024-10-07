@@ -46,7 +46,7 @@ To set up **evnt.** locally, follow these steps:
 1. Clone the Repository:
 
     ```bash
-    git clone https://github.com/yourusername/evnt.git
+    git clone https://github.com/ABHAY-100/evnt.git
     ```
     
 2. Navigate to the Project Directory:
