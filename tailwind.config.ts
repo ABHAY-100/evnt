@@ -9,7 +9,11 @@ const config: Config = {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'manrope': ['Manrope', 'sans-serif'],
+      },
+    },
   },
   darkMode: "class",
   plugins: [nextui()]

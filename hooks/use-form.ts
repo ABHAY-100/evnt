@@ -67,7 +67,7 @@ export const useForm = () => {
       };
 
       // Send to API endpoint
-      const response = await fetch('/api/create-group', {
+      const response = await fetch('/api/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
