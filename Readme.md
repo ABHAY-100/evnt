@@ -24,7 +24,7 @@ Organizing events like hackathons, coding contests, and workshops often requires
 
 ## Key Features
 
-1. **Cost Effective**:Designed for small-scale events like workshops and hackathons, evnt. offers a simple, budget-friendly solution. Unlike complex tools, it provides a free and easy way to manage groups and add participants effortlessly.
+1. **Free and Open Source**:Designed for small-scale events like workshops and hackathons, evnt. offers a simple, budget-friendly solution. Unlike complex tools, it provides a free and easy way to manage groups and add participants effortlessly.
 
 2. **Enhanced Privacy**: Users clone the project and run it on their local host, ensuring complete control over data and enhanced privacy.
 
@@ -157,7 +157,7 @@ The application utilizes Telegram's MTProto protocol via the `telegram` npm pack
 
 ## Conclusion
 
-**evnt.** is dedicated to revolutionizing the event management process for college organizations by automating essential tasks. Our tool empowers event organizers to concentrate on creating impactful and memorable events while minimizing administrative challenges.
+**evnt.** is dedicated to revolutionizing the event management process for organizations or individuals by automating essential tasks. Our tool empowers event organizers to concentrate on creating impactful and memorable events while minimizing administrative challenges.
 
 <br/>
 
