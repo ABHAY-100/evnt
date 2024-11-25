@@ -73,6 +73,7 @@ Ensure you have the following installed:
     ```
 
 4. Set Up Environment Variables
+   
    - Locate the `.env.example` file in the root of the project.
    - Create a new file named `.env` or `.env.local` in the root directory.
    - Copy and paste the contents of `.env.example` into the newly created `.env` file.
@@ -80,40 +81,34 @@ Ensure you have the following installed:
 ### Configure Telegram API
 
 5. Access Telegram Developer Tools
+
    - Open [my.telegram.org](https://my.telegram.org) and log in with your phone number.
    - After logging in, click on **API Development Tools**.
 
 <img src="assets/for_readme/telegram_api_step1.png" alt="Step 1" style="width: 700px" />
-
-7. After login click on `API development tools`
-
 <img src="assets/for_readme/telegram_api_step2.png" alt="Step 2" style="width: 700px" />
 
-8. Create new Application by filling the form by providing a nice `App Title` & `Short Name`.
+6. Create a New Application by filling out the form with an appropriate **App Title** and **Short Name**.
 
 <img src="assets/for_readme/telegram_api_step3.png" alt="Step 3" style="width: 700px" />
 
-9. Now you will be shown a page with some credentials. Copy the `API_ID` and `API_HASH`.
+7. Retrieve API Credentials
+   - Once created, you will be shown a page with your **API_ID** and **API_HASH**.
+   - Copy these values and paste them into the `.env` file under their respective keys.
 
-10. Paste the ID and HASH to the .env file you have created to the corresponding keys.
+8. Add Telegram Phone Number in the `.env` file in international format as ```TELEGRAM_PHONE_NUMBER=+<YourPhoneNumber>```
 
-11. Add your phone number to the `TELEGRAM_PHONE_NUMBER=` in international format
+### Run the Application
 
-12. And then run
-
-    ```bash
-    npx tsx scripts/auth-telegram.ts
-    ```
-
-12. There you will get a string in terminal prompting to save thats your `TELEGRAM_SESSION` paste it in the env file
-
-13. Run the Application:
+10. Start the Application
 
     ```bash
     npm run dev
     ```
 
-14. Open your web browser and go to `http://localhost:3000` to view the application.
+11. Open your web browser and navigate to `http://localhost:3000` to access the app.
+
+
 
     
 ## Build With
