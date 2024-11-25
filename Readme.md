@@ -4,7 +4,9 @@
 
 
 
+
 # evnt.
+
 ## Overview
 
 **evnt.** is a powerful event management automation tool designed to streamline the organization of events across various sectors. By automating tasks like participant registration and group management, **evnt.** allows organizers to focus on delivering memorable experiences rather than getting bogged down by administrative work.
@@ -117,6 +119,37 @@ Ensure you have the following installed:
     ```
 
 10. Open your web browser and navigate to `http://localhost:3000` to access the app.
+
+
+<br />
+
+
+## How It Works
+
+### Technical Implementation
+
+The application utilizes Telegram's MTProto protocol via the `telegram` npm package, unlocking advanced capabilities beyond traditional bots. Here's a simplified breakdown:
+
+1. Authentication & Setup
+    - Authenticates using Telegram’s MTProto API with API ID, API Hash, and phone number.
+    - Supports session persistence and handles two-factor authentication if enabled.
+
+2. Group Creation
+    - Accepts a CSV file of participant details and validates phone numbers.
+    - Programmatically creates groups or channels, generates invite links, and supports broadcast channels and megagroups.
+
+3. Member Management
+    - Adds members by resolving phone numbers to Telegram accounts.
+    - Uses fallback methods like invite links or private messages for privacy-restricted users.
+
+4. Operation Report
+   - Produces and downloads a detailed CSV report
+
+3. **Member Management**
+   - Resolves phone numbers to Telegram accounts
+   - Imports contacts using Telegram's contact system
+   - Adds members through direct invitation
+   - Implements fallback mechanisms for privacy-restricted users
 
 
 <br />
