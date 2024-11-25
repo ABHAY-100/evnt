@@ -100,13 +100,13 @@ Ensure you have the following installed:
 
 ### Run the Application
 
-10. Start the Application
+9. Start the Application
 
     ```bash
     npm run dev
     ```
 
-11. Open your web browser and navigate to `http://localhost:3000` to access the app.
+10. Open your web browser and navigate to `http://localhost:3000` to access the app.
 
 
 
