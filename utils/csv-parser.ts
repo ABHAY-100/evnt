@@ -1,4 +1,44 @@
-export const csvToJson = async (file: File): Promise<string[]> => {
+export interface ContactEntry {
+  name: string;
+  phoneNumber: string;
+  validationError?: string;
+}
+
+function validatePhoneNumber(phone: string): string | null {
+  // Remove any spaces, dashes, dots, or parentheses
+  const cleaned = phone.replace(/[\s\-\(\)\.]|/g, '');
+  
+  // Check if starts with + and has 10-15 digits
+  if (!/^\+?\d{10,15}$/.test(cleaned)) {
+    return 'Invalid phone number format. Must have 10-15 digits';
+  }
+
+  // Ensure it starts with +
+  if (!cleaned.startsWith('+')) {
+    return 'Phone number must start with +';
+  }
+
+  return null;
+}
+
+function validateName(name: string): string | null {
+  if (!name.trim()) {
+    return 'Name cannot be empty';
+  }
+
+  if (name.length > 64) {
+    return 'Name is too long (max 64 characters)';
+  }
+
+  // Check for invalid characters
+  if (/[<>{}\\\/]/.test(name)) {
+    return 'Name contains invalid characters';
+  }
+
+  return null;
+}
+
+export const csvToJson = async (file: File): Promise<ContactEntry[]> => {
   if (!file) {
     throw new Error("No file provided");
   }
@@ -9,45 +49,73 @@ export const csvToJson = async (file: File): Promise<string[]> => {
       throw new Error("The CSV file is empty");
     }
 
-    const lines = text.split(/[\r\n]+/);
-    const phoneNumbers: string[] = [];
+    const lines = text.split(/[\r\n]+/).filter(line => line.trim());
+    const contacts: ContactEntry[] = [];
+    let hasValidEntries = false;
 
-    for (const line of lines) {
-      if (!line.trim()) continue;
-
-      const values = line
-        .replace(/['"]/g, "")
-        .split(/[,;\t]/)
-        .map((val) => val.trim());
-
-      for (const val of values) {
-        if (!val) continue;
-
-        const cleaned = val.replace(/[\s\-().+]/g, "");
-
-        if (cleaned.length >= 10 && /^\d+$/.test(cleaned)) {
-          phoneNumbers.push("+" + cleaned);
-        }
-      }
-    }
-
-    const uniqueNumbers = Array.from(new Set(phoneNumbers)).filter(Boolean);
-
-    if (uniqueNumbers.length === 0) {
+    // Validate header
+    const headerLine = lines[0]?.toLowerCase();
+    if (!headerLine || !headerLine.includes('name') || !headerLine.includes('phone')) {
       throw new Error(
-        "No valid phone numbers found in the CSV file. Numbers should be at least 10 digits (e.g., +1234567890)"
+        'Invalid CSV format. First line must be a header containing "name" and "phone" or "phonenumber"'
       );
     }
 
-    console.log("Found phone numbers:", uniqueNumbers);
-    return uniqueNumbers;
+    // Process each line
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) continue;
+
+      const values = line.split(',').map(val => val.trim());
+
+      if (values.length !== 2) {
+        contacts.push({
+          name: line,
+          phoneNumber: '',
+          validationError: `Invalid line format. Expected 2 columns (name,phone) but found ${values.length}`
+        });
+        continue;
+      }
+
+      const [name, phoneNumber] = values;
+      const contact: ContactEntry = { name, phoneNumber };
+
+      // Validate name
+      const nameError = validateName(name);
+      if (nameError) {
+        contact.validationError = nameError;
+        contacts.push(contact);
+        continue;
+      }
+
+      // Validate phone number
+      const phoneError = validatePhoneNumber(phoneNumber);
+      if (phoneError) {
+        contact.validationError = phoneError;
+        contacts.push(contact);
+        continue;
+      }
+
+      // If we reach here, the entry is valid
+      hasValidEntries = true;
+      contacts.push(contact);
+    }
+
+    if (!hasValidEntries) {
+      throw new Error(
+        'No valid entries found in the CSV file. Please check the format and try again.'
+      );
+    }
+
+    console.log("Processed contacts:", contacts);
+    return contacts;
   } catch (error) {
     console.error("Error parsing CSV:", error);
     if (error instanceof Error) {
       throw error;
     }
     throw new Error(
-      "Failed to parse CSV file. Please ensure it contains valid phone numbers."
+      "Failed to parse CSV file. Please ensure it follows the format: name,phone"
     );
   }
 };

@@ -4,4 +4,5 @@
 
 body {
   font-family: var(--font-manrope), system-ui, sans-serif;
+  background-color: black;
 }

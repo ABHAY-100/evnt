@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/font": "^14.2.14",
     "@nextui-org/react": "^2.4.8",
     "aos": "^2.3.4",
     "discord.js": "^14.16.3",

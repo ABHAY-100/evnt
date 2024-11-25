@@ -1,25 +1,23 @@
 import { NextResponse } from 'next/server';
 import { TelegramClient } from 'telegram';
 import { Api } from 'telegram/tl';
-// import { StringSession } from 'telegram/sessions';
 import { getTelegramClient } from '@/utils/telegram-client';
 import { BigInteger } from 'telegram';
+import { ContactEntry } from '@/utils/csv-parser';
+import { ContactStatus } from '@/utils/report-generator';
 
 interface GroupInfo {
-  name: string;
-  description: string;
-  members: string[];
   type: 'channel' | 'group';
+  name: string;
+  description?: string;
+  contacts: ContactEntry[];
 }
 
 interface CreateGroupResponse {
   success: boolean;
   channelId?: string;
   inviteLink?: string;
-  addedMembers?: string[];
-  failedMembers?: Array<{ phoneNumber: string; error: string }>;
-  totalMembers?: number;
-  successfullyAdded?: number;
+  contactStatuses: ContactStatus[];
   error?: string;
 }
 
@@ -77,29 +75,6 @@ async function createGroup(client: TelegramClient, groupInfo: GroupInfo): Promis
     const channel = createResult.chats[0];
     const channelId = channel.id.toString();
 
-    // Add members using phone numbers
-    const addedMembers: string[] = [];
-    const failedMembers: Array<{ phoneNumber: string; error: string }> = [];
-
-    for (const phoneNumber of groupInfo.members) {
-      try {
-        const user = await importContactAndGetEntity(client, phoneNumber);
-        
-        await client.invoke(new Api.channels.InviteToChannel({
-          channel: await client.getInputEntity(channelId),
-          users: [await client.getInputEntity(user.id)]
-        }));
-        
-        addedMembers.push(phoneNumber);
-        console.log(`Successfully added ${phoneNumber} to ${groupInfo.name}`);
-        
-        await new Promise(resolve => setTimeout(resolve, 2000));
-      } catch (err) {
-        console.error(`Failed to add member ${phoneNumber}:`, err);
-        failedMembers.push({ phoneNumber, error: (err as Error).message });
-      }
-    }
-
     // Generate invite link
     const inviteResult = await client.invoke(new Api.messages.ExportChatInvite({
       peer: await client.getInputEntity(channelId),
@@ -109,20 +84,117 @@ async function createGroup(client: TelegramClient, groupInfo: GroupInfo): Promis
       request_needed: false
     }));
 
+    const contactStatuses: ContactStatus[] = [];
+
+    // Process each contact
+    for (const contact of groupInfo.contacts) {
+      try {
+        // If there's a validation error, add it to the status directly
+        if (contact.validationError) {
+          contactStatuses.push({
+            ...contact,
+            status: 'validation_failed',
+            error: contact.validationError
+          });
+          continue;
+        }
+
+        const user = await importContactAndGetEntity(client, contact.phoneNumber);
+        
+        if (!user) {
+          contactStatuses.push({
+            ...contact,
+            status: 'no_account',
+            error: 'No Telegram account found with this number'
+          });
+          continue;
+        }
+
+        try {
+          // Try to add to group
+          await client.invoke(new Api.channels.InviteToChannel({
+            channel: await client.getInputEntity(channelId),
+            users: [await client.getInputEntity(user.id)]
+          }));
+          
+          contactStatuses.push({
+            ...contact,
+            status: 'added'
+          });
+        } catch (err) {
+          // If failed to add (probably due to privacy settings), send private message
+          try {
+            await client.sendMessage(user, {
+              message: `Hello! You've been invited to join ${groupInfo.name}. Click here to join: ${inviteResult.link}`
+            });
+            
+            contactStatuses.push({
+              ...contact,
+              status: 'invited',
+              inviteLink: inviteResult.link
+            });
+          } catch (msgError) {
+            let errorMessage = 'Could not add user or send invitation';
+            
+            if (err instanceof Error) {
+              if (err.message.includes('privacy')) {
+                errorMessage = 'User has restricted who can add them to groups';
+              } else if (err.message.includes('PEER_FLOOD')) {
+                errorMessage = 'Too many requests. Please try again later';
+              } else if (err.message.includes('USER_PRIVACY_RESTRICTED')) {
+                errorMessage = 'User has restricted who can message them';
+              }
+            }
+            
+            contactStatuses.push({
+              ...contact,
+              status: 'error',
+              error: errorMessage
+            });
+          }
+        }
+        
+        // Add delay to avoid rate limiting
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      } catch (err) {
+        let errorMessage = 'Failed to process contact';
+        
+        if (err instanceof Error) {
+          if (err.message.includes('PHONE_NUMBER_INVALID')) {
+            errorMessage = 'Invalid phone number format';
+          } else if (err.message.includes('PHONE_NUMBER_BANNED')) {
+            errorMessage = 'This number has been banned from Telegram';
+          } else if (err.message.includes('USER_DEACTIVATED')) {
+            errorMessage = 'Telegram account has been deactivated';
+          } else {
+            errorMessage = err.message;
+          }
+        }
+        
+        contactStatuses.push({
+          ...contact,
+          status: 'error',
+          error: errorMessage
+        });
+      }
+    }
+
     return {
       success: true,
       channelId,
       inviteLink: inviteResult.link,
-      addedMembers,
-      failedMembers,
-      totalMembers: groupInfo.members.length,
-      successfullyAdded: addedMembers.length
+      contactStatuses
     };
   } catch (err) {
     console.error('Error creating group:', err);
     return {
       success: false,
-      error: (err as Error).message
+      error: err instanceof Error ? err.message : 'Unknown error',
+      contactStatuses: groupInfo.contacts.map(contact => ({
+        ...contact,
+        status: 'error',
+        error: 'Failed to create group'
+      }))
     };
   }
 }
@@ -132,9 +204,9 @@ export async function POST(request: Request) {
     const client = await getTelegramClient();
     const groupInfo = await request.json() as GroupInfo;
 
-    if (!groupInfo.name || !groupInfo.members || !groupInfo.members.length) {
+    if (!groupInfo.name || !groupInfo.contacts || !groupInfo.contacts.length) {
       return NextResponse.json(
-        { success: false, error: 'Invalid input: name and members are required' },
+        { success: false, error: 'Invalid input: name and contacts are required' },
         { status: 400 }
       );
     }
@@ -144,7 +216,7 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error('API Error:', err);
     return NextResponse.json(
-      { success: false, error: (err as Error).message },
+      { success: false, error: err instanceof Error ? err.message : 'Unknown error' },
       { status: 500 }
     );
   }

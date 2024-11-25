@@ -31,7 +31,7 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] py-8 transition-all ease-in-out duration-600">
+    <div className="min-h-screen w-full bg-[#000000] py-8 transition-all ease-in-out duration-600">
       <NextUIProvider>
         <NavBar />
       </NextUIProvider>

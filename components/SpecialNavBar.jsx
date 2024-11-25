@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <NextUINavbar 
       maxWidth={'full'}
-      className="fixed z-10 flex backdrop-blur-2xl items-center justify-between lg:h-24 top-bar px-5 bg-near-black max-md:px-1 max-md:h-[80px] top-0 md:h-[96px] border-b-2 border-white/40 border-dashed max-h-[90px]"
+      className="fixed z-10 flex backdrop-blur-3xl items-center justify-between lg:h-24 top-bar px-5 bg-near-black max-md:px-1 max-md:h-[80px] top-0 md:h-[96px] border-b-2 border-white/40 border-dashed max-h-[90px]"
       style={{ maxWidth: 'none' }}
     >
       <NavbarContent className="relative h-full w-full">
