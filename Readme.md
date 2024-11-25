@@ -1,10 +1,10 @@
 
 <!-- ![Nextjsgit](https://github.com/user-attachments/assets/d276960c-bfd6-4b41-8ea3-3daa52a0c027) -->
-# ![Nextjsgit](assets/github_banner.png)
+![Nextjsgit](assets/github_banner.png)
 
 
 
-
+# evnt.
 ## Overview
 
 **evnt.** is a powerful event management automation tool designed to streamline the organization of events across various sectors. By automating tasks like participant registration and group management, **evnt.** allows organizers to focus on delivering memorable experiences rather than getting bogged down by administrative work.
