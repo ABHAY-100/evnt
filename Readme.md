@@ -145,12 +145,6 @@ The application utilizes Telegram's MTProto protocol via the `telegram` npm pack
 4. Operation Report
    - Produces and downloads a detailed CSV report
 
-3. **Member Management**
-   - Resolves phone numbers to Telegram accounts
-   - Imports contacts using Telegram's contact system
-   - Adds members through direct invitation
-   - Implements fallback mechanisms for privacy-restricted users
-
 
 <br />
     
