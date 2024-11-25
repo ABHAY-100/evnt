@@ -1,6 +1,6 @@
 
 ![Nextjsgit](https://github.com/user-attachments/assets/d276960c-bfd6-4b41-8ea3-3daa52a0c027)
-![Nextjsgit](assets/github_banner.png)
+
 
 
 
@@ -9,25 +9,26 @@
 
 ## Overview
 
-**evnt.** is a powerful event management automation tool designed to streamline the organization of events across various sectors. By automating tasks like participant registration and group management, **evnt.** allows organizers to focus on delivering memorable experiences rather than getting bogged down by administrative work.
+**evnt.** is a robust tool for automating event management, designed to simplify organizing events across different industries. By automating tasks such as creating groups and adding members, 
+**evnt.** enables organizers to concentrate on crafting impactful experiences instead of handling time-consuming administrative tasks.
 
 <br />
 
 ## Problem Statement
 
-Organizing events often requires manually managing participant information and group communications, which can be time-consuming and error-prone. For example, during a Tech Conference, organizers must create separate groups for speakers, volunteers, and attendees, complicating communication and coordination.
+Organizing events like hackathons, coding contests, and workshops often requires manual participant management, such as group creation and adding members. This process is time-consuming, especially for college-hosted or small-scale events with limited resources. A streamlined, automated solution is crucial to reduce administrative effort and enhance efficiency.
 
-evnt. simplifies this process by automating group creation and participant management, allowing organizers to focus on delivering a successful event.
+**evnt.** simplifies this process by automating group creation and participant management.
 
 <br />
 
 ## Key Features
 
-1. **Automated Group Management**: Effortlessly create WhatsApp Communities and automatically assign participants and organizers to relevant WhatsApp Groups tailored to specific event requirements.
+1. **Cost Effective**:Designed for small-scale events like workshops and hackathons, evnt. offers a simple, budget-friendly solution. Unlike complex tools, it provides a free and easy way to manage groups and add participants effortlessly.
 
-2. **Seamless Registration Process**: Generate Google Forms for event registration, ensuring efficient data collection and management.
+2. **Enhanced Privacy**: Users clone the project and run it on their local host, ensuring complete control over data and enhanced privacy.
 
-3. **Streamlined Participant Addition**: Automatically extract participant information from Google Forms responses and add them to designated WhatsApp groups, reducing manual entry errors and ensuring a smooth onboarding process.
+3. **Streamlined Participant Addition**: Automatically extract participant information from CSV files and add them to designated Telegram groups or channels, reducing manual entry errors and ensuring a smooth onboarding process.
 
 4. **User-Friendly Interface**: A clean and intuitive interface that allows users to navigate the application with ease, making event management straightforward and efficient.
 
