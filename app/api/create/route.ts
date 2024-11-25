@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 import { TelegramClient } from 'telegram';
 import { Api } from 'telegram/tl';
-import { StringSession } from 'telegram/sessions';
+// import { StringSession } from 'telegram/sessions';
 import { getTelegramClient } from '@/utils/telegram-client';
+import { BigInteger } from 'telegram';
 
 interface GroupInfo {
   name: string;
@@ -41,7 +42,7 @@ async function importContactAndGetEntity(client: TelegramClient, phoneNumber: st
     // If direct resolution fails, try importing
     const importResult = await client.invoke(new Api.contacts.ImportContacts({
       contacts: [new Api.InputPhoneContact({
-        clientId: BigInt(1),
+        clientId: BigInteger.fromValue(1),
         phone: phoneNumber,
         firstName: 'User',
         lastName: ''

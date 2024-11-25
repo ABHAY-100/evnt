@@ -3,6 +3,9 @@
 import React from "react";
 import { useForm } from "@/hooks/use-form";
 
+import { NextUIProvider } from "@nextui-org/react";
+import NavBar from '@/components/SpecialNavBar'
+
 const Page = () => {
   const { formState, isLoading, handleStateChange, handleSubmit } = useForm();
   const { isChannel, groupName, groupDescription, selectedFile, resetFileKey } =
@@ -26,6 +29,10 @@ const Page = () => {
 
   return (
     <div className="min-h-screen bg-[#000000] py-8">
+      <NextUIProvider>
+        <NavBar />
+      </NextUIProvider>
+
       <div className="max-w-[600px] mx-auto bg-[#000000] p-8 my-[160px]">
         {/* top content + controls */}
         <div className="flex flex-col gap-[52px] items-center mb-8">
@@ -38,7 +45,7 @@ const Page = () => {
               Just pick what you need!
             </p>
           </div>
-          <div className="flex gap-[32px] max-w-[540px] w-full justify-between h-[52px]">
+          <div className="flex gap-[32px] max-w-[540px] w-full justify-between h-[52px] max-sm:gap-[12px]">
             <button
               type="button"
               disabled={isLoading}
@@ -70,7 +77,7 @@ const Page = () => {
           className="flex flex-col gap-[60px] mt-[62px]"
         >
           <div className="flex flex-col gap-[10px]">
-            <label className="text-white text-xl leading-[-2%] font-semibold">
+            <label className="text-white text-xl leading-[-2%] font-semibold max-sm:text-base">
               {isChannel ? "Channel Name" : "Group Name"}*
             </label>
             <input
@@ -80,14 +87,14 @@ const Page = () => {
               value={groupName}
               onChange={(e) => handleStateChange("groupName", e.target.value)}
               placeholder={`eg. JuicyChemistry`}
-              className={`w-full py-2 bg-transparent placeholder-white/40 text-white border-b-2 border-white/40 font-normal focus:border-white/80 outline-none ${
+              className={`w-full py-2 bg-transparent placeholder-white/40 text-white border-b-2 border-white/20 font-normal focus:border-white/80 outline-none ${
                 isLoading ? "opacity-50 cursor-not-allowed" : ""
               }`}
             />
           </div>
 
           <div className="flex flex-col gap-[10px]">
-            <label className="text-white text-xl leading-[-2%] font-semibold">
+            <label className="text-white text-xl max-sm:text-base leading-[-2%] font-semibold">
               {isChannel ? "Channel Description" : "Group Description"}
             </label>
             <textarea
@@ -97,18 +104,18 @@ const Page = () => {
                 handleStateChange("groupDescription", e.target.value)
               }
               placeholder={`try typing something here!..`}
-              className={`w-full placeholder-white/40 py-2 bg-transparent h-11 text-white border-b-2 border-white/40 font-normal focus:border-white/80 outline-none ${
+              className={`w-full placeholder-white/40 py-2 bg-transparent h-11 text-white border-b-2 border-white/20 font-normal focus:border-white/80 outline-none ${
                 isLoading ? "opacity-50 cursor-not-allowed" : ""
               }`}
             />
           </div>
 
-          <div className="flex flex-col gap-[10px]">
-            <label className="text-white text-xl leading-[-2%] font-semibold">
+          <div className="flex flex-col gap-[14px]">
+            <label className="text-white max-sm:text-base text-xl leading-[-2%] font-semibold">
               Upload Members List*
             </label>
             <div
-              className={`border-2 flex bg-[#FFF]/[0.04] justify-center items-center border-dashed border-white/20 text-center h-[240px] ${
+              className={`border-2 flex bg-[#FFF]/[0.04] max-sm:h-[180px] justify-center items-center border-dashed border-white/20 text-center h-[240px] ${
                 isLoading ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
@@ -131,8 +138,8 @@ const Page = () => {
               </label>
             </div>
             <div className="flex flex-row justify-between">
-              <p className="text-white/80 text-sm font-medium">Supported Format: CSV</p>
-              <p className="text-white/80 text-sm font-medium">Max: ∞</p>
+              <p className="text-white/80 text-sm font-medium max-sm:text-xs">Supported Format: CSV</p>
+              <p className="text-white/80 text-sm font-medium max-sm:text-xs">Max Size: ♾️</p>
             </div>
           </div>
 
