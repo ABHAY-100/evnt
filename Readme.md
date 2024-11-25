@@ -75,7 +75,7 @@ To set up **evnt.** locally, follow these steps:
     
 ## Build With
 
-![Tech Stack](https://skillicons.dev/icons?i=js,html,tailwind,nextjs,vercel,figma)
+![Tech Stack](https://skillicons.dev/icons?i=ts,js,html,tailwind,nextjs,figma)
 
 ## Conclusion
 
