@@ -85,12 +85,12 @@ Ensure you have the following installed:
    - Open [my.telegram.org](https://my.telegram.org) and log in with your phone number.
    - After logging in, click on **API Development Tools**.
 
-<img src="assets/for_readme/telegram_api_step1.png" alt="Step 1" style="width: 700px" />
-<img src="assets/for_readme/telegram_api_step2.png" alt="Step 2" style="width: 700px" />
+<img src="assets/for_readme/telegram_api_step1.png" alt="Step 1" style="width: 500px" />
+<img src="assets/for_readme/telegram_api_step2.png" alt="Step 2" style="width: 500px" />
 
 6. Create a New Application by filling out the form with an appropriate **App Title** and **Short Name**.
 
-<img src="assets/for_readme/telegram_api_step3.png" alt="Step 3" style="width: 700px" />
+<img src="assets/for_readme/telegram_api_step3.png" alt="Step 3" style="width: 500px" />
 
 7. Retrieve API Credentials
    - Once created, you will be shown a page with your **API_ID** and **API_HASH**.
