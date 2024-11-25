@@ -137,7 +137,7 @@ The application utilizes Telegram's MTProto protocol via the `telegram` npm pack
 
 2. Group Creation
     - Accepts a CSV file of participant details and validates phone numbers.
-    - Programmatically creates groups or channels, generates invite links, and supports broadcast channels and megagroups.
+    - Programmatically creates groups or channels, generates invite links.
 
 3. Member Management
     - Adds members by resolving phone numbers to Telegram accounts.
@@ -149,7 +149,7 @@ The application utilizes Telegram's MTProto protocol via the `telegram` npm pack
 
 <br />
     
-## Build With
+## Built With
 
 ![Tech Stack](https://skillicons.dev/icons?i=html,css,ts,js,tailwind,nextjs,figma)
 
