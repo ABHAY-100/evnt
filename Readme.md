@@ -24,11 +24,11 @@ Organizing events like hackathons, coding contests, and workshops often requires
 
 ## Key Features
 
-1. **Free and Open Source**:Designed for small-scale events like workshops and hackathons, evnt. offers a simple, budget-friendly solution. Unlike complex tools, it provides a free and easy way to manage groups and add participants effortlessly.
+1. **Free and Open Source**: Ideal for small-scale events, this free, open-source tool streamlines group management and participant addition, providing a cost-effective alternative to complex, expensive platforms. Customize the source code to develop solutions tailored to your unique requirements.
 
-2. **Enhanced Privacy**: Users clone the project and run it on their local host, ensuring complete control over data and enhanced privacy.
+2. **Enhanced Privacy**: Clone and run locally for full data control and enhanced privacy.
 
-3. **Streamlined Participant Addition**: Automatically extract participant information from CSV files and add them to designated Telegram groups or channels, reducing manual entry errors and ensuring a smooth onboarding process.
+3. **Streamlined Participant Addition**: Automatically import participant data from CSVs and add to Telegram groups, minimizing errors and streamlining onboarding.
 
 4. **User-Friendly Interface**: A clean and intuitive interface that allows users to navigate the application with ease, making event management straightforward and efficient.
 
@@ -157,7 +157,7 @@ The application utilizes Telegram's MTProto protocol via the `telegram` npm pack
 
 ## Conclusion
 
-**evnt.** is dedicated to revolutionizing the event management process for organizations or individuals by automating essential tasks. Our tool empowers event organizers to concentrate on creating impactful and memorable events while minimizing administrative challenges.
+**evnt.** is dedicated to revolutionizing the event management process for organizations or individuals by automating the process  of adding the participants to groups. Our tool empowers event organizers to concentrate on creating impactful and memorable events while minimizing administrative challenges.
 
 <br/>
 
