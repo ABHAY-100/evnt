@@ -40,6 +40,7 @@ Due to the limited time during our 15-hour hackathon, we prioritized automating 
 - **Transition to Alternative Platforms**: We explored using Telegram and Discord for group management, but faced limitations regarding group or server creation capabilities.
 
 
+<br />
 
 
 ## Getting Started
@@ -109,11 +110,13 @@ Ensure you have the following installed:
 10. Open your web browser and navigate to `http://localhost:3000` to access the app.
 
 
-
+<br />
     
 ## Build With
 
 ![Tech Stack](https://skillicons.dev/icons?i=html,css,ts,js,tailwind,nextjs,figma)
+
+<br />
 
 ## Conclusion
 
