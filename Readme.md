@@ -61,15 +61,41 @@ To set up **evnt.** locally, follow these steps:
     npm install
     ```
 
-4. Run the Application:
+4. You can see a file named `.env.example` in the root of the project. Create a new file named `.env` or `.env.local` in the root and then copy & paste the contents of `example.env` completely there.
+
+5. Now Open `https://my.telegram.org` and login with you phone number.
+
+<img src="assets/for_readme/telegram_api_step1.png" alt="Step 1" style="width: 700px" />
+
+7. After login click on `API development tools`
+
+<img src="assets/for_readme/telegram_api_step2.png" alt="Step 2" style="width: 700px" />
+
+8. Create new Application by filling the form by providing a nice `App Title` & `Short Name`.
+
+<img src="assets/for_readme/telegram_api_step3.png" alt="Step 3" style="width: 700px" />
+
+9. Now you will be shown a page with some credentials. Copy the `API_ID` and `API_HASH`.
+
+10. Paste the ID and HASH to the .env file you have created to the corresponding keys.
+
+11. Add your phone number to the `TELEGRAM_PHONE_NUMBER=` in international format
+
+12. And then run
 
     ```bash
-    npm start
+    npx tsx scripts/auth-telegram.ts
     ```
 
-5. Open your web browser and go to `http://localhost:3000` to view the application.
+12. There you will get a string in terminal prompting to save thats your `TELEGRAM_SESSION` paste it in the env file
 
-*Note: Currently, only the frontend has been developed.*
+13. Run the Application:
+
+    ```bash
+    npm run dev
+    ```
+
+14. Open your web browser and go to `http://localhost:3000` to view the application.
 
     
 ## Build With
