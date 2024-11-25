@@ -15,18 +15,18 @@ const SuccessModal = ({ isOpen, onClose, title, message }: SuccessModalProps) =>
       backdrop="blur"
       placement="center"
       classNames={{
-        backdrop: "bg-black/50 backdrop-opacity-40",
+        backdrop: "bg-black/60 backdrop-opacity-40",
         base: "border-2 border-white/40 border-dashed bg-black rounded-none mx-2",
         header: "border-b-2 border-white/40 border-dashed rounded-none",
         body: "py-6 rounded-none",
-        closeButton: "absolute top-3 right-3 hover:bg-white/10 active:bg-white/20 w-8 h-8",
+        closeButton: "hidden",
         wrapper: "!items-center w-full px-4"
       }}
     >
       <ModalContent className="m-auto">
         <button 
           onClick={onClose}
-          className="absolute p-2 top-3 right-3 w-8 h-8 flex items-center justify-center border-2 border-white/40 border-dashed hover:bg-white/10 active:bg-white/20 transition-colors"
+          className="absolute p-2 top-3 right-3 w-8 h-8 flex items-center justify-center border-2 border-white/40 border-dashed hover:bg-white/10 active:bg-white/20 transition-colors focus:outline-none"
         >
           <svg 
             width="14" 

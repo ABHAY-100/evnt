@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from 'next/font/local'
+import { AOSProvider } from "@/components/providers/AOSProvider";
 
 const manrope = localFont({
   src: './fonts/Manrope.ttf',
@@ -19,7 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${manrope.variable}`}>
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased`}>
+        <AOSProvider>{children}</AOSProvider>
+      </body>
     </html>
   );
 }

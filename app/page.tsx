@@ -36,7 +36,10 @@ const Page = () => {
         <NavBar />
       </NextUIProvider>
 
-      <div className="max-w-[600px] mx-auto bg-[#000000] p-8 my-[160px]">
+      <div className="max-w-[600px] mx-auto bg-[#000000] p-8 my-[160px]" 
+      data-aos-anchor-placement="top-bottom"
+      data-aos="fade-up"
+      data-aos-duration="500">
         {/* top content + controls */}
         <div className="flex flex-col gap-[52px] items-center mb-8">
           <div className="flex justify-center flex-col items-center gap-[9px]">
