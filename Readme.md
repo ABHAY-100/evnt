@@ -9,11 +9,15 @@
 
 **evnt.** is a powerful event management automation tool designed to streamline the organization of events across various sectors. By automating tasks like participant registration and group management, **evnt.** allows organizers to focus on delivering memorable experiences rather than getting bogged down by administrative work.
 
+<br />
+
 ## Problem Statement
 
 Organizing events often requires manually managing participant information and group communications, which can be time-consuming and error-prone. For example, during a Tech Conference, organizers must create separate groups for speakers, volunteers, and attendees, complicating communication and coordination.
 
 evnt. simplifies this process by automating group creation and participant management, allowing organizers to focus on delivering a successful event.
+
+<br />
 
 ## Key Features
 
@@ -25,6 +29,8 @@ evnt. simplifies this process by automating group creation and participant manag
 
 4. **User-Friendly Interface**: A clean and intuitive interface that allows users to navigate the application with ease, making event management straightforward and efficient.
 
+<br />
+
 ## Team Members
 
 1. [Abhay Balakrishnan](https://github.com/ABHAY-100)
@@ -32,13 +38,16 @@ evnt. simplifies this process by automating group creation and participant manag
 3. [Elvin J Alapatt](https://github.com/Elvin2605)
 4. [Joshua Sebi](https://github.com/JoshuaSebi)
 
+<br />
+
 ## Challenges Faced
 
-Due to the limited time during our 15-hour hackathon, we prioritized automating group creation and member addition within evnt. We successfully developed the front end; however, we faced several challenges, including:
+During the 15-hour hackathon, we encountered two major challenges:
 
-- **WhatsApp API Limitations**: Gaining access to the WhatsApp API proved to be complex, with potential risks of account bans when using unauthorized methods.
-- **Transition to Alternative Platforms**: We explored using Telegram and Discord for group management, but faced limitations regarding group or server creation capabilities.
+- **WhatsApp API Limitations**: Accessing the API was complex and risky, with unauthorized methods leading to potential bans.
+- **Switch to Telegram**: By using Telegram's official API and MTProto protocol, we unlocked full user-level capabilities, overcoming the limitations of regular bots.
 
+This transition ensured security, flexibility, and respect for user privacy.
 
 <br />
 
