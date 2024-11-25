@@ -5,9 +5,10 @@ import { useForm } from "@/hooks/use-form";
 
 import { NextUIProvider } from "@nextui-org/react";
 import NavBar from '@/components/SpecialNavBar'
+import SuccessModal from "@/components/SuccessModal";
 
 const Page = () => {
-  const { formState, isLoading, handleStateChange, handleSubmit } = useForm();
+  const { formState, isLoading, handleStateChange, handleSubmit, successModal, setSuccessModal } = useForm();
   const { isChannel, groupName, groupDescription, selectedFile, resetFileKey } =
     formState;
 
@@ -19,16 +20,18 @@ const Page = () => {
     try {
       await handleSubmit(e);
     } catch (error) {
-      alert(
-        error instanceof Error
+      setSuccessModal({
+        isOpen: true,
+        title: 'Error',
+        message: error instanceof Error
           ? error.message
           : "An error occurred while processing the form"
-      );
+      });
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] py-8">
+    <div className="min-h-screen bg-[#000000] py-8 transition-all ease-in-out duration-600">
       <NextUIProvider>
         <NavBar />
       </NextUIProvider>
@@ -146,7 +149,7 @@ const Page = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className={`w-full py-3 bg-white text-black font-semibold hover:bg-white/90 transition-colors {
+            className={`w-full py-3 bg-white text-black font-bold hover:bg-white/90 transition-colors ${
               isLoading ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
@@ -156,6 +159,12 @@ const Page = () => {
           </button>
         </form>
       </div>
+      <SuccessModal 
+        isOpen={successModal.isOpen}
+        onClose={() => setSuccessModal(prev => ({ ...prev, isOpen: false }))}
+        title={successModal.title}
+        message={successModal.message}
+      />
     </div>
   );
 };

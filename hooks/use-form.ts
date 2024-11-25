@@ -11,17 +11,30 @@ export const useForm = () => {
     resetFileKey: 0,
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [successModal, setSuccessModal] = useState({
+    isOpen: false,
+    title: '',
+    message: '',
+  });
 
   const handleStateChange = (key: keyof FormState, value: any) => {
     if (key === "selectedFile" && value) {
       // Validate file type
       if (!value.name.toLowerCase().endsWith('.csv')) {
-        alert('Please upload a CSV file');
+        setSuccessModal({
+          isOpen: true,
+          title: 'Invalid File',
+          message: 'Please upload a CSV file'
+        });
         return;
       }
       // Validate file size (10MB)
       if (value.size > 10 * 1024 * 1024) {
-        alert('File size should be less than 10MB');
+        setSuccessModal({
+          isOpen: true,
+          title: 'File Too Large',
+          message: 'File size should be less than 10MB'
+        });
         return;
       }
     }
@@ -81,7 +94,11 @@ export const useForm = () => {
         throw new Error(result.error || 'Failed to create group');
       }
 
-      alert(`Successfully created ${payload.type}!\nInvite Link: ${result.inviteLink}`);
+      setSuccessModal({
+        isOpen: true,
+        title: 'Success!',
+        message: `Successfully created ${payload.type}!\nInvite Link: ${result.inviteLink}`
+      });
       resetForm();
       
       return result;
@@ -98,5 +115,7 @@ export const useForm = () => {
     isLoading,
     handleStateChange,
     handleSubmit,
+    successModal,
+    setSuccessModal,
   };
 };
