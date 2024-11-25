@@ -39,31 +39,49 @@ Due to the limited time during our 15-hour hackathon, we prioritized automating 
 - **WhatsApp API Limitations**: Gaining access to the WhatsApp API proved to be complex, with potential risks of account bans when using unauthorized methods.
 - **Transition to Alternative Platforms**: We explored using Telegram and Discord for group management, but faced limitations regarding group or server creation capabilities.
 
+
+
+
 ## Getting Started
 
-To set up **evnt.** locally, follow these steps:
+Follow these steps to set up evnt. locally:
 
-1. Clone the Repository:
+### Prerequisites
+
+Ensure you have the following installed:
+- Node.js (v16 or higher)
+- npm
+
+### Installation
+
+1. Clone the Repository
 
     ```bash
     git clone https://github.com/ABHAY-100/evnt.git
     ```
     
-2. Navigate to the Project Directory:
+2. Navigate to the Project Directory
    
     ```bash
     cd evnt
     ```
     
-3. Install Dependencies:
+3. Install Dependencies
    
     ```bash
     npm install
     ```
 
-4. You can see a file named `.env.example` in the root of the project. Create a new file named `.env` or `.env.local` in the root and then copy & paste the contents of `example.env` completely there.
+4. Set Up Environment Variables
+   - Locate the `.env.example` file in the root of the project.
+   - Create a new file named `.env` or `.env.local` in the root directory.
+   - Copy and paste the contents of `.env.example` into the newly created `.env` file.
 
-5. Now Open `https://my.telegram.org` and login with you phone number.
+### Configure Telegram API
+
+5. Access Telegram Developer Tools
+   - Open [my.telegram.org](https://my.telegram.org) and log in with your phone number.
+   - After logging in, click on **API Development Tools**.
 
 <img src="assets/for_readme/telegram_api_step1.png" alt="Step 1" style="width: 700px" />
 
