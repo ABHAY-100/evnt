@@ -121,6 +121,25 @@ Ensure you have the following installed:
 
 10. Open your web browser and navigate to `http://localhost:3000` to access the app.
 
+### How to Use?
+
+11. Once the application is running, open it in your browser (`http://localhost:3000`), and you will see a form.
+
+12. Select whether you want to create a group or channel using the switch option.
+
+13. Enter the group/channel name and description in the corresponding fields.
+
+14. Upload a CSV file containing participant data in the following format:
+    ```bash
+    name, phone
+    johndoe, +91933222XXXX
+    janedoe, +91933852XXXX
+    ```
+
+15. If everything is configured correctly, the members will be added automatically. A success modal will appear with event statistics, and a CSV report (named `group/channelname-report.csv`) will be downloaded with a summary of the process.
+
+
+
 
 <br />
 
