@@ -114,7 +114,7 @@ export const useForm = () => {
             '',
             'Phone Number Format:',
             '• Must start with + and country code',
-            '• Example: +919074943085 (India)',
+            '• Example: +91907494XXXX (India)',
             '',
             'Check the CSV report for details on each contact.',
           ].join('\n')
