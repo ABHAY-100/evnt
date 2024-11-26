@@ -185,12 +185,7 @@ The application utilizes Telegram's MTProto protocol via the `telegram` npm pack
 
 
 <br />
-    
-## Built With
 
-![Tech Stack](https://skillicons.dev/icons?i=html,css,ts,js,tailwind,nextjs,figma)
-
-<br />
 
 ## License
 
@@ -226,6 +221,12 @@ We welcome any contributions! Here’s how you can contribute
 
 Please be respectful and constructive in your interactions. Let’s work together to improve evnt.!
 
+
+<br />
+
+## Built With
+
+![Tech Stack](https://skillicons.dev/icons?i=html,css,ts,js,tailwind,nextjs,figma)
 
 <br />
 
