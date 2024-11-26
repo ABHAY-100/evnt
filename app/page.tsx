@@ -4,11 +4,18 @@ import React from "react";
 import { useForm } from "@/hooks/use-form";
 
 import { NextUIProvider } from "@nextui-org/react";
-import NavBar from '@/components/SpecialNavBar'
+import NavBar from "@/components/SpecialNavBar";
 import SuccessModal from "@/components/SuccessModal";
 
 const Page = () => {
-  const { formState, isLoading, handleStateChange, handleSubmit, successModal, setSuccessModal } = useForm();
+  const {
+    formState,
+    isLoading,
+    handleStateChange,
+    handleSubmit,
+    successModal,
+    setSuccessModal,
+  } = useForm();
   const { isChannel, groupName, groupDescription, selectedFile, resetFileKey } =
     formState;
 
@@ -22,10 +29,11 @@ const Page = () => {
     } catch (error) {
       setSuccessModal({
         isOpen: true,
-        title: 'Error',
-        message: error instanceof Error
-          ? error.message
-          : "An error occurred while processing the form"
+        title: "Error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "An error occurred while processing the form",
       });
     }
   };
@@ -36,15 +44,15 @@ const Page = () => {
         <NavBar />
       </NextUIProvider>
 
-      <div className="max-w-[600px] mx-auto bg-[#000000] p-8 my-[160px]" 
-      data-aos-anchor-placement="top-bottom"
-      data-aos="fade-up"
-      data-aos-duration="500">
-        {/* top content + controls */}
+      <div
+        className="max-w-[600px] mx-auto bg-[#000000] p-8 my-[160px]"
+        data-aos-anchor-placement="top-bottom"
+        data-aos="fade-up"
+        data-aos-duration="500"
+      >
         <div className="flex flex-col gap-[52px] items-center mb-8">
           <div className="flex justify-center flex-col items-center gap-[9px]">
             <h1 className="text-3xl font-semibold text-center text-white leading-[-2%]">
-              {/* Create a New {isChannel ? "Channel" : "Group"} */}
               So, what’re you tryna create?
             </h1>
             <p className="text-white text-base font-normal leading-[-2%]">
@@ -77,7 +85,6 @@ const Page = () => {
           </div>
         </div>
 
-        {/* main form part */}
         <form
           onSubmit={onSubmit}
           className="flex flex-col gap-[60px] mt-[62px]"
@@ -144,8 +151,12 @@ const Page = () => {
               </label>
             </div>
             <div className="flex flex-row justify-between">
-              <p className="text-white/80 text-sm font-medium max-sm:text-xs">Supported Format: CSV</p>
-              <p className="text-white/80 text-sm font-medium max-sm:text-xs">Max Size: ♾️</p>
+              <p className="text-white/80 text-sm font-medium max-sm:text-xs">
+                Supported Format: CSV
+              </p>
+              <p className="text-white/80 text-sm font-medium max-sm:text-xs">
+                Max Size: 10MB
+              </p>
             </div>
           </div>
 
@@ -162,9 +173,9 @@ const Page = () => {
           </button>
         </form>
       </div>
-      <SuccessModal 
+      <SuccessModal
         isOpen={successModal.isOpen}
-        onClose={() => setSuccessModal(prev => ({ ...prev, isOpen: false }))}
+        onClose={() => setSuccessModal((prev) => ({ ...prev, isOpen: false }))}
         title={successModal.title}
         message={successModal.message}
       />

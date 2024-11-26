@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from 'react';
-import { initAOS } from '@/utils/aos';
+import { useEffect } from "react";
+import { initAOS } from "@/utils/aos";
 
 interface AOSProviderProps {
   children: React.ReactNode;
