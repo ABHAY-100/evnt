@@ -192,6 +192,43 @@ The application utilizes Telegram's MTProto protocol via the `telegram` npm pack
 
 <br />
 
+## License
+
+By contributing, you agree that your contributions will be licensed under the [MIT License](https://github.com/ABHAY-100/evnt/blob/main/LICENSE.md). See the LICENSE file for more details.
+
+<br />
+
+## Contributing to evnt.
+
+Thank you for considering contributing to evnt.! Here’s how you can help make it even better.
+
+### Reporting Issues
+
+If you find a bug or have a suggestion, feel free to create an issue
+
+1. Go to the [Issues tab](https://github.com/ABHAY-100/evnt/issues).
+
+2. Click on New Issue.
+
+3. Describe the issue or feature request clearly, and provide any relevant details or steps to reproduce.
+
+### Contributing
+
+We welcome any contributions! Here’s how you can contribute
+
+1. Fork the repo and make your changes.
+
+2. Open a pull request with a description of your changes.
+
+3. We’ll review it and merge it!
+
+### Code of Conduct
+
+Please be respectful and constructive in your interactions. Let’s work together to improve evnt.!
+
+
+<br />
+
 ## Conclusion
 
 **evnt.** is dedicated to revolutionizing the event management process for organizations or individuals by automating the process  of adding the participants to groups. Our tool empowers event organizers to concentrate on creating impactful and memorable events while minimizing administrative challenges.
