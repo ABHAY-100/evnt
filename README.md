@@ -111,25 +111,43 @@ Ensure you have the following installed:
 
 8. Add Telegram Phone Number in the `.env` file in international format as ```TELEGRAM_PHONE_NUMBER=+<YourPhoneNumber>```
 
+9. Generate `TELEGRAM_SESSION` and Update the Environment File
+    - Run the following command to generate the `TELEGRAM_SESSION` string
+      
+      
+      
+        ```bash
+        npx ts-node scripts/auth-telegram.ts
+        ```
+    - Follow the instructions in the terminal to authenticate your Telegram account.
+    - Once the `TELEGRAM_SESSION` is generated, copy the output string.
+    - Open your `.env` file and add the `TELEGRAM_SESSION` key with the copied string
+      
+   
+      
+      ```bash
+      TELEGRAM_SESSION=<YourGeneratedSessionString>
+      ```
+
 ### Run the Application
 
-9. Start the Application
+10. Start the Application
 
     ```bash
     npm run dev
     ```
 
-10. Open your web browser and navigate to `http://localhost:3000` to access the app.
+11. Open your web browser and navigate to `http://localhost:3000` to access the app.
 
 ### How to Use?
 
-11. Once the application is running, open it in your browser (`http://localhost:3000`), and you will see a form.
+12. Once the application is running, open it in your browser (`http://localhost:3000`), and you will see a form.
 
-12. Select whether you want to create a group or channel using the switch option.
+13. Select whether you want to create a group or channel using the switch option.
 
-13. Enter the group/channel name and description in the corresponding fields.
+14. Enter the group/channel name and description in the corresponding fields.
 
-14. Upload a CSV file containing participant data in the following format:
+15. Upload a CSV file containing participant data in the following format:
     ```bash
     name, phone
     johndoe, +91933222XXXX
