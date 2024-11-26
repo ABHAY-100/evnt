@@ -162,7 +162,7 @@ Ensure you have the following installed:
 <br />
 
 
-## How It Works
+## How It Works?
 
 ### Technical Implementation
 
