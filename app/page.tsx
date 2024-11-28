@@ -49,6 +49,7 @@ const Page = () => {
         data-aos-anchor-placement="top-bottom"
         data-aos="fade-up"
         data-aos-duration="500"
+        data-aos-delay="2000"
       >
         <div className="flex flex-col gap-[52px] items-center mb-8">
           <div className="flex justify-center flex-col items-center gap-[9px]">

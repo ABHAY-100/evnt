@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { AOSProvider } from "@/components/providers/AOSProvider";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const manrope = localFont({
   src: "../assets/fonts/Manrope.ttf",
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable}`}>
       <body className={`antialiased`}>
+        <LoadingScreen />
         <AOSProvider>{children}</AOSProvider>
       </body>
     </html>

@@ -15,6 +15,7 @@
     "dotenv": "^16.4.5",
     "framer-motion": "^11.11.17",
     "input": "^1.0.1",
+    "ldrs": "^1.0.2",
     "next": "14.2.14",
     "node-fetch": "^3.3.2",
     "react": "^18",
