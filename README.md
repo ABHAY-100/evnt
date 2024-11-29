@@ -14,6 +14,12 @@
 
 <br />
 
+## Preview
+
+[![meco](assets/for_readme/preview.png)](https://localhost:3000)
+
+<br />
+
 ## Problem Statement
 
 Organizing events like hackathons, coding contests, and workshops often requires manual participant management, such as group creation and adding members. This process is time-consuming, especially for college-hosted or small-scale events with limited resources. A streamlined, automated solution is crucial to reduce administrative effort and enhance efficiency.
