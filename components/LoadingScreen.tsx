@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { mirage } from "ldrs";
+import { ring } from "ldrs";
 
-mirage.register();
+ring.register();
 
 declare module "react" {
   interface ReactJSXElement {
-    "l-mirage": any;
+    "l-ring": any;
   }
 }
 
@@ -26,7 +26,7 @@ export default function LoadingScreen() {
 
   return (
     <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
-      <l-mirage size="120" speed="2.5" color="white"></l-mirage>
+      <l-ring size="50" stroke="4" speed="2.5" color="white"></l-ring>
     </div>
   );
 }
