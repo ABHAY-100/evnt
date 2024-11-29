@@ -16,7 +16,7 @@
 
 ## Preview
 
-[![evnt.](assets/for_readme/preview.png)]
+![evnt.](assets/for_readme/preview.png)
 
 <br />
 
