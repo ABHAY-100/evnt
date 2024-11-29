@@ -16,7 +16,7 @@
 
 ## Preview
 
-[![meco](assets/for_readme/preview.png)](https://localhost:3000)
+[![evnt.](assets/for_readme/preview.png)]
 
 <br />
 
