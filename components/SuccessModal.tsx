@@ -64,13 +64,13 @@ const SuccessModal = ({
       backdrop="blur"
       placement="center"
       classNames={{
-        backdrop: "bg-black/35 backdrop-blur-xl",
+        backdrop: "bg-black/14 backdrop-blur-lg",
         base: "border-2 border-white/[0.20] border-dashed bg-black rounded-none mx-auto max-w-[720px] w-[95%] sm:w-[90%]",
         header:
           "border-b-2 border-white/[0.20] border-dashed rounded-none px-6",
         body: "py-6 px-6 rounded-none",
         closeButton: "hidden",
-        wrapper: "!items-center",
+        // wrapper: "",
       }}
     >
       <ModalContent className="m-auto relative">
