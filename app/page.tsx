@@ -100,7 +100,7 @@ const Page = () => {
               disabled={isLoading}
               value={groupName}
               onChange={(e) => handleStateChange("groupName", e.target.value)}
-              placeholder={`eg. JuicyChemistry`}
+              placeholder={`e.g. Avengers`}
               className={`w-full py-2 bg-transparent placeholder-white/40 text-white border-b-2 border-white/20 font-normal focus:border-white/80 outline-none ${
                 isLoading ? "opacity-50 cursor-not-allowed" : ""
               }`}
